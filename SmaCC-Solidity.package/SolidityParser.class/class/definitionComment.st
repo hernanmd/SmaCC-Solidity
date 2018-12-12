@@ -253,9 +253,6 @@ StateVariableDeclaration
 	;
 
 ############# Functions Naming  ####################################################################################################################
-#TypeNameList 
-#	: ""("" ( TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
-#	;
 
 FunctionTypeName 
 	: ""function"" ParameterList 'type_list' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" ParameterList 'returned_types' )? {{}}
