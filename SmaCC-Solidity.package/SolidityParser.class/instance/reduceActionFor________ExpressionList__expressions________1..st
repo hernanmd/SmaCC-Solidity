@@ -1,5 +1,5 @@
 generated-reduction actions
-reduceActionFor______ExpressionList__arguments______1: nodes
+reduceActionFor________ExpressionList__expressions________1: nodes
 	| result |
 	result := Array new: 3.
 	result at: 1 put: (nodes at: 1).

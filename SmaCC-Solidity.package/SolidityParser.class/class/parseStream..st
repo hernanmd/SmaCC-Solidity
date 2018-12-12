@@ -1,4 +1,4 @@
-generated
+instance creation
 parseStream: aStream
 	[ ^ super parseStream: aStream ]
 		on: SmaCCParserError

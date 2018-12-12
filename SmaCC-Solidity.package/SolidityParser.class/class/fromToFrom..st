@@ -1,4 +1,4 @@
-generated
+instance creation
 fromToFrom: aMessage
 	| stream array |
 	array := Array new: 2.

@@ -1,5 +1,5 @@
 generated-reduction actions
-reduceActionFor______ExpressionList__arguments_______1: nodes
+reduceActionFor________ExpressionList__expressions_________1: nodes
 	| result |
 	result := Array new: 3.
 	^ result

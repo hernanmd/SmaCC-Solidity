@@ -151,6 +151,7 @@ ContractPart
 	| UsingForDeclaration
 	| StructDefinition 
 	| UserModifierDefinition 
+	| ConstructorDefinition
 	| FunctionDefinition 
 	| EventDefinition 
 	| EnumDefinition
@@ -252,13 +253,14 @@ StateVariableDeclaration
 	;
 
 ############# Functions Naming  ####################################################################################################################
-TypeNameList 
-	: ""("" ( TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
-	;
+#TypeNameList 
+#	: ""("" ( TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')? ("","" TypeName 'type' (ModifierStorage 'storage_modifier')? (LiteralIdentifier 'identifier')?)* )? "")"" {{}}
+#	;
 
 FunctionTypeName 
-	: ""function"" TypeNameList 'type_list' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" TypeNameList 'returned_types' )? {{}}
+	: ""function"" ParameterList 'type_list' ( (ModifierVisibility | ModifierFunctionImmuable | ModifierFunctionPayable) 'modifier' )* (""returns"" ParameterList 'returned_types' )? {{}}
 	;
+
 
 ############# Functions Definition ####################################################################################################################
 FunctionDefinition 
@@ -267,6 +269,12 @@ FunctionDefinition
                      ( ""returns"" ParameterList 'returned_types' )? ("";"" | Block 'block' ) {{}}
 	| ""function"" ""("" "")""  ( ModifierFunctionDefinition 'modifier' )* ("";"" | Block 'block' ) {{FallbackFunctionDefinition}} 
 	;
+
+ConstructorDefinition 
+	: ""constructor"" ParameterList 'parameters' 
+                     ( ModifierFunctionDefinition 'modifier' )*
+                     ( ""returns"" ParameterList 'returned_types' )? ("";"" | Block 'block' ) {{}};
+
 
 IndexedParameter:  TypeName 'type' ""indexed""? (LiteralIdentifier 'identifier')? {{}}; 
 IndexedParameterList 
